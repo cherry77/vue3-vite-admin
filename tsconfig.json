@@ -10,6 +10,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true, // 允许export=导出，由import from 导入
     "lib": ["esnext", "dom"], // TS需要引用的库，即声明文件
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [ "src/*" ],
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

@@ -18,13 +18,8 @@ export default defineConfig(({ command, mode }) => {
         },
         // /@/xxxx => src/xxxx
         {
-          find: /\/@\//,
+          find: '@',
           replacement: pathResolve('src') + '/',
-        },
-        // /#/xxxx => types/xxxx
-        {
-          find: /\/#\//,
-          replacement: pathResolve('types') + '/',
         },
       ],
     },
