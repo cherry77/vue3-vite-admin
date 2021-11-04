@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "esnext", // 目标语言的版本
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "esnext", // 生成代码的模板标准
+    "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"]
+    "esModuleInterop": true, // 允许export=导出，由import from 导入
+    "lib": ["esnext", "dom"], // TS需要引用的库，即声明文件
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
