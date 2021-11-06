@@ -11,3 +11,8 @@ export const router = createRouter({
   strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 });
+
+// config router
+export function setupRouter(app: App<Element>) {
+  app.use(router);
+}

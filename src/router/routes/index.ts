@@ -4,7 +4,6 @@ import { PageEnum } from '@/enums/pageEnum';
 
 const modules = import.meta.globEager('./modules/**/*.ts');
 
-
 export const RootRoute: RouteRecordRaw = {
   path: '/',
   name: 'Root',
@@ -17,8 +16,15 @@ export const RootRoute: RouteRecordRaw = {
 export const LoginRoute: RouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('/@/views/sys/login/Login.vue'),
+  component: () => import('@/views/sys/login/Login.vue'),
   meta: {
     // title: t('routes.basic.login'),
+    title: '登录',
   },
 };
+
+// Basic routing without permission
+export const basicRoutes = [
+  LoginRoute,
+  RootRoute
+];

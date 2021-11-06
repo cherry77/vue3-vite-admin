@@ -3,7 +3,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'AppProvider',
   setup(props, { slots }) {
-    return {}
+    return () => slots.default?.();
   }
 })
 </script>
