@@ -1,10 +1,17 @@
-import type { RouteRecordRaw } from 'vue-router';
+import type { AppRouteModule } from '@/router/types';
 
 import { PageEnum } from '@/enums/pageEnum';
 
 const modules = import.meta.globEager('./modules/**/*.ts');
+const routeModuleList: AppRouteModule[] = [];
 
-export const RootRoute: RouteRecordRaw = {
+Object.keys(modules).forEach((key) => {
+  const mod = modules[key].default || {};
+  const modList = Array.isArray(mod) ? [...mod] : [mod];
+  routeModuleList.push(...modList);
+});
+
+export const RootRoute: AppRouteModule = {
   path: '/',
   name: 'Root',
   redirect: PageEnum.BASE_HOME,
@@ -13,7 +20,7 @@ export const RootRoute: RouteRecordRaw = {
   },
 };
 
-export const LoginRoute: RouteRecordRaw = {
+export const LoginRoute: AppRouteModule = {
   path: '/login',
   name: 'Login',
   component: () => import('@/views/sys/login/Login.vue'),
@@ -26,5 +33,6 @@ export const LoginRoute: RouteRecordRaw = {
 // Basic routing without permission
 export const basicRoutes = [
   LoginRoute,
-  RootRoute
+  RootRoute,
+  ...routeModuleList
 ];

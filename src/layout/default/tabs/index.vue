@@ -1,5 +1,5 @@
 <template>
-sider
+tabs
 </template>
 <script lang="ts" setup>
 </script>

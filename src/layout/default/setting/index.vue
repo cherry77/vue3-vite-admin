@@ -1,5 +1,5 @@
 <template>
-sider
+setting
 </template>
 <script lang="ts" setup>
 </script>
