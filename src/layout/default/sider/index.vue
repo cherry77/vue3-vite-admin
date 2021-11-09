@@ -1,5 +1,5 @@
 <template>
-<LayoutSider/>
+  <LayoutSider/>
 </template>
 <script lang="ts" setup>
 import LayoutSider from './LayoutSider.vue'
