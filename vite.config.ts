@@ -23,6 +23,15 @@ export default defineConfig(({ command, mode }) => {
         },
       ],
     },
+    css: {
+      preprocessorOptions: {
+        less: {
+          // modifyVars: ,
+          additionalData:  `@import (reference) "${resolve('src/design/config.less')}";`,
+          javascriptEnabled: true,
+        },
+      },
+    },
   }
 })
 
