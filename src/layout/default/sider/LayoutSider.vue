@@ -1,4 +1,5 @@
 <template>
+  <div :style="getHiddenDomStyle"></div>
   <Layout.Sider
     class="Sider"
     v-show="showClassSideBarRef"
@@ -24,7 +25,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed } from 'vue'
+import { computed, unref } from 'vue'
 import { Layout } from 'ant-design-vue'
 import { useDesign } from '@/hooks/web/useDesign';
 import LayoutMenu from './../menu/index.vue';
@@ -39,7 +40,29 @@ const showClassSideBarRef = computed(() => {
 const getSiderClass = computed(() => {
   return [
     prefixCls,
+    `${prefixCls}--fixed`
   ];
+});
+// const getSiderClass = computed(() => {
+//   return [
+//     prefixCls,
+//     {
+//       [`${prefixCls}--fixed`]: unref(getMenuFixed),
+//       [`${prefixCls}--mix`]: unref(getIsMixMode) && !unref(getIsMobile),
+//     },
+//   ];
+// });
+const getHiddenDomStyle = computed((): CSSProperties => {
+  // const width = `${unref(getRealWidth)}px`;
+  const width = '210px';
+  return {
+    width: width,
+    overflow: 'hidden',
+    flex: `0 0 ${width}`,
+    maxWidth: width,
+    minWidth: width,
+    transition: 'all 0.2s',
+  };
 });
 </script>
 <style lang="less">

@@ -1,7 +1,7 @@
 <template>
   <Layout :class="prefixCls">
     <!-- <LayoutFeature /> -->
-    <LayoutHeader />
+    <!-- <LayoutHeader /> -->
     <Layout :class="[layoutClass]">
       <LayoutSideBar/>
       <Layout :class="`${prefixCls}-main`">
@@ -27,7 +27,7 @@ import { useDesign } from '@/hooks/web/useDesign';
 const { prefixCls } = useDesign('default-layout')
 
 const layoutClass = computed(() => {
-  let cls: string[] = ['ant-layout'];
+  let cls: string[] = ['ant-layout', 'ant-layout-has-sider'];
   // if (unref(getIsMixSidebar) || unref(getShowMenu)) {
   //   cls.push('ant-layout-has-sider');
   // }

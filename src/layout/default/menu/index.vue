@@ -1,4 +1,5 @@
 <template>
+  <AppLogo :class="getLogoClass"/>
   <Menu
     mode="inline"
     theme="dark"
@@ -49,8 +50,11 @@
   </Menu>
 </template>
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { Menu, MenuItem, SubMenu } from 'ant-design-vue'
+import { AppLogo } from '@/components/Application';
+import { useDesign } from '@/hooks/web/useDesign'
+
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -67,5 +71,40 @@ const state = reactive({
   openKeys: ['sub1'],
   preOpenKeys: ['sub1'],
 });
+
+const { prefixCls } = useDesign('layout-menu');
+
+const getLogoClass = computed(() => {
+  return [
+    `${prefixCls}-logo`,
+    // unref(getComputedMenuTheme),
+    // {
+    //   [`${prefixCls}--mobile`]: unref(getIsMobile),
+    // },
+  ];
+});
 </script>
-<style></style>
+<style lang="less">
+@prefix-cls: ~"@{namespace}-layout-menu";
+@logo-prefix-cls: ~"@{namespace}-app-logo";
+
+.@{prefix-cls} {
+  &-logo {
+    height: @header-height;
+    padding: 10px 4px 10px 10px;
+
+    // img {
+    //   width: @logo-width;
+    //   height: @logo-width;
+    // }
+  }
+
+  &--mobile {
+    .@{logo-prefix-cls} {
+      &__title {
+        opacity: 100%;
+      }
+    }
+  }
+}
+</style>
