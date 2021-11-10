@@ -2,7 +2,7 @@
   <Layout :class="prefixCls">
     <!-- <LayoutFeature /> -->
     <LayoutHeader />
-    <Layout>
+    <Layout :class="[layoutClass]">
       <LayoutSideBar/>
       <Layout :class="`${prefixCls}-main`">
         <!-- <LayoutMultipleHeader /> -->

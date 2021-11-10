@@ -142,10 +142,20 @@
   resolved "https://registry.npmmirror.com/@types/lodash/download/@types/lodash-4.14.176.tgz#641150fc1cda36fbfa329de603bbb175d7ee20c0"
   integrity sha1-ZBFQ/BzaNvv6Mp3mA7uxddfuIMA=
 
+"@types/node@^14.17.1":
+  version "14.17.33"
+  resolved "https://registry.npmmirror.com/@types/node/download/@types/node-14.17.33.tgz#011ee28e38dc7aee1be032ceadf6332a0ab15b12"
+  integrity sha512-noEeJ06zbn3lOh4gqe2v7NMGS33jrulfNqYFDjjEbhpDEHR5VTxgYNQSBqBlJIsBJW3uEYDgD6kvMnrrhGzq8g==
+
 "@types/node@^16.11.6":
   version "16.11.6"
   resolved "https://registry.npmmirror.com/@types/node/download/@types/node-16.11.6.tgz#6bef7a2a0ad684cf6e90fcfe31cecabd9ce0a3ae"
   integrity sha1-a+96KgrWhM9ukPz+Mc7KvZzgo64=
+
+"@types/tinycolor2@^1.4.2":
+  version "1.4.3"
+  resolved "https://registry.nlark.com/@types/tinycolor2/download/@types/tinycolor2-1.4.3.tgz?cache=0&sync_timestamp=1629709494923&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Ftinycolor2%2Fdownload%2F%40types%2Ftinycolor2-1.4.3.tgz#ed4a0901f954b126e6a914b4839c77462d56e706"
+  integrity sha1-7UoJAflUsSbmqRS0g5x3Ri1W5wY=
 
 "@vitejs/plugin-vue@^1.9.3":
   version "1.9.4"
@@ -306,6 +316,13 @@ acorn@^7.1.1:
   resolved "https://registry.nlark.com/acorn/download/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=
 
+ansi-styles@^4.1.0:
+  version "4.3.0"
+  resolved "https://registry.nlark.com/ansi-styles/download/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
+  integrity sha1-7dgDYornHATIWuegkG7a00tkiTc=
+  dependencies:
+    color-convert "^2.0.1"
+
 ant-design-vue@^2.2.8:
   version "2.2.8"
   resolved "https://registry.npmmirror.com/ant-design-vue/download/ant-design-vue-2.2.8.tgz?cache=0&sync_timestamp=1635928950687&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fant-design-vue%2Fdownload%2Fant-design-vue-2.2.8.tgz#fa87cf6842d8ee9a0d8af393ff4099ecc4072f2b"
@@ -363,12 +380,39 @@ call-bind@^1.0.2:
     function-bind "^1.1.1"
     get-intrinsic "^1.0.2"
 
+chalk@^4.1.1:
+  version "4.1.2"
+  resolved "https://registry.nlark.com/chalk/download/chalk-4.1.2.tgz?cache=0&sync_timestamp=1627646614989&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fchalk%2Fdownload%2Fchalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+  integrity sha1-qsTit3NKdAhnrrFr8CqtVWoeegE=
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 character-parser@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npm.taobao.org/character-parser/download/character-parser-2.2.0.tgz#c7ce28f36d4bcd9744e5ffc2c5fcde1c73261fc0"
   integrity sha1-x84o821LzZdE5f/CxfzeHHMmH8A=
   dependencies:
     is-regex "^1.0.3"
+
+clean-css@^5.1.2:
+  version "5.2.2"
+  resolved "https://registry.npmmirror.com/clean-css/download/clean-css-5.2.2.tgz?cache=0&sync_timestamp=1634992398113&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fclean-css%2Fdownload%2Fclean-css-5.2.2.tgz#d3a7c6ee2511011e051719838bdcf8314dc4548d"
+  integrity sha1-06fG7iURAR4FFxmDi9z4MU3EVI0=
+  dependencies:
+    source-map "~0.6.0"
+
+color-convert@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.nlark.com/color-convert/download/color-convert-2.0.1.tgz?cache=0&sync_timestamp=1624607968569&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcolor-convert%2Fdownload%2Fcolor-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
+  integrity sha1-ctOmjVmMm9s68q0ehPIdiWq9TeM=
+  dependencies:
+    color-name "~1.1.4"
+
+color-name@~1.1.4:
+  version "1.1.4"
+  resolved "https://registry.nlark.com/color-name/download/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+  integrity sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=
 
 compute-scroll-into-view@^1.0.17:
   version "1.0.17"
@@ -406,6 +450,13 @@ debug@^3.2.6:
   integrity sha1-clgLfpFF+zm2Z2+cXl+xALk0F5o=
   dependencies:
     ms "^2.1.1"
+
+debug@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.npmmirror.com/debug/download/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=
+  dependencies:
+    ms "2.1.2"
 
 doctypes@^1.1.0:
   version "1.1.0"
@@ -537,6 +588,11 @@ esbuild-openbsd-64@0.13.12:
   resolved "https://registry.npmmirror.com/esbuild-openbsd-64/download/esbuild-openbsd-64-0.13.12.tgz?cache=0&sync_timestamp=1635657418495&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fesbuild-openbsd-64%2Fdownload%2Fesbuild-openbsd-64-0.13.12.tgz#adde32f2f1b05dc4bd4fc544d6ea5a4379f9ca4d"
   integrity sha1-rd4y8vGwXcS9T8VE1upaQ3n5yk0=
 
+esbuild-plugin-alias@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmmirror.com/esbuild-plugin-alias/download/esbuild-plugin-alias-0.1.2.tgz#1232fbde807c0c8ad44c44ec859819eb492e12a8"
+  integrity sha1-EjL73oB8DIrUTETshZgZ60kuEqg=
+
 esbuild-sunos-64@0.13.12:
   version "0.13.12"
   resolved "https://registry.npmmirror.com/esbuild-sunos-64/download/esbuild-sunos-64-0.13.12.tgz?cache=0&sync_timestamp=1635657408489&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fesbuild-sunos-64%2Fdownload%2Fesbuild-sunos-64-0.13.12.tgz#a7ecaf52b7364fbee76dc8aa707fa3e1cff3342c"
@@ -556,6 +612,11 @@ esbuild-windows-arm64@0.13.12:
   version "0.13.12"
   resolved "https://registry.npmmirror.com/esbuild-windows-arm64/download/esbuild-windows-arm64-0.13.12.tgz?cache=0&sync_timestamp=1635657418008&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fesbuild-windows-arm64%2Fdownload%2Fesbuild-windows-arm64-0.13.12.tgz#782c5a8bd6d717ea55aaafe648f9926ca36a4a88"
   integrity sha1-eCxai9bXF+pVqq/mSPmSbKNqSog=
+
+esbuild@^0.11.23:
+  version "0.11.23"
+  resolved "https://registry.npmmirror.com/esbuild/download/esbuild-0.11.23.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fesbuild%2Fdownload%2Fesbuild-0.11.23.tgz#c42534f632e165120671d64db67883634333b4b8"
+  integrity sha1-xCU09jLhZRIGcdZNtniDY0MztLg=
 
 esbuild@^0.13.2:
   version "0.13.12"
@@ -608,6 +669,11 @@ graceful-fs@^4.1.2:
   version "4.2.8"
   resolved "https://registry.npmmirror.com/graceful-fs/download/graceful-fs-4.2.8.tgz#e412b8d33f5e006593cbd3cee6df9f2cebbe802a"
   integrity sha1-5BK40z9eAGWTy9PO5t+fLOu+gCo=
+
+has-flag@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.nlark.com/has-flag/download/has-flag-4.0.0.tgz?cache=0&sync_timestamp=1626716578584&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhas-flag%2Fdownload%2Fhas-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
+  integrity sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=
 
 has-symbols@^1.0.1, has-symbols@^1.0.2:
   version "1.0.2"
@@ -781,6 +847,11 @@ moment@^2.27.0:
   version "2.29.1"
   resolved "https://registry.nlark.com/moment/download/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
+
+ms@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.npmmirror.com/ms/download/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
+  integrity sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=
 
 ms@^2.1.1:
   version "2.1.3"
@@ -1044,6 +1115,18 @@ sourcemap-codec@^1.4.4:
   resolved "https://registry.nlark.com/sourcemap-codec/download/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=
 
+supports-color@^7.1.0:
+  version "7.2.0"
+  resolved "https://registry.nlark.com/supports-color/download/supports-color-7.2.0.tgz?cache=0&sync_timestamp=1626703455199&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsupports-color%2Fdownload%2Fsupports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
+  integrity sha1-G33NyzK4E4gBs+R4umpRyqiWSNo=
+  dependencies:
+    has-flag "^4.0.0"
+
+tinycolor2@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.nlark.com/tinycolor2/download/tinycolor2-1.4.2.tgz#3f6a4d1071ad07676d7fa472e1fac40a719d8803"
+  integrity sha1-P2pNEHGtB2dtf6Ry4frECnGdiAM=
+
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.nlark.com/to-fast-properties/download/to-fast-properties-2.0.0.tgz?cache=0&sync_timestamp=1628418855671&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fto-fast-properties%2Fdownload%2Fto-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
@@ -1068,6 +1151,20 @@ upath@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/upath/download/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
   integrity sha1-UMc96mjW9rmQ9R0nnOYIFmXWGos=
+
+vite-plugin-theme@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.nlark.com/vite-plugin-theme/download/vite-plugin-theme-0.8.1.tgz#9008256a58a57dca81004ffa1de63ce9f60bf9eb"
+  integrity sha1-kAglalilfcqBAE/6HeY86fYL+es=
+  dependencies:
+    "@types/node" "^14.17.1"
+    "@types/tinycolor2" "^1.4.2"
+    chalk "^4.1.1"
+    clean-css "^5.1.2"
+    debug "^4.3.2"
+    esbuild "^0.11.23"
+    esbuild-plugin-alias "^0.1.2"
+    tinycolor2 "^1.4.2"
 
 vite@^2.6.4:
   version "2.6.13"
