@@ -6,7 +6,7 @@ import { createI18n } from 'vue-i18n'
 export let i18n: ReturnType<typeof createI18n>;
 
 async function createI18nOptions(): Promise<I18nOptions> {
-  const locale = 'ch'
+  const locale = 'zh_CN'
   const defaultLocal = await import(`./lang/${locale}.ts`);
   const message = defaultLocal.default?.message ?? {};
   return {

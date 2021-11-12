@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 // import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-theme';
 
@@ -12,6 +13,7 @@ export default defineConfig(({ command, mode }) => {
   return {
     plugins: [
       vue(), // 编译vue文件
+      vueJsx(),
       // viteThemePlugin({
       //   // Match the color to be modified
       //   colorVariables: [],
@@ -40,6 +42,11 @@ export default defineConfig(({ command, mode }) => {
           replacement: pathResolve('src') + '/',
         },
       ],
+    },
+    server: {
+      // Listening on all local IPs
+      host: true,
+      port: 3200,
     },
     css: {
       preprocessorOptions: {

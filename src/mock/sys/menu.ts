@@ -39,15 +39,17 @@ const dashboardRoute = {
     },
   ],
 };
+const menus = [dashboardRoute]
 
+// export default [
+//   {
+//     url: '/basic-api/getMenuList',
+//     timeout: 1000,
+//     method: 'get',
+//     response: (request: requestParams) => {
+//       return resultSuccess([dashboardRoute]);
+//     },
+//   },
+// ] as MockMethod[];
 
-export default [
-  {
-    url: '/basic-api/getMenuList',
-    timeout: 1000,
-    method: 'get',
-    response: (request: requestParams) => {
-      return resultSuccess([dashboardRoute]);
-    },
-  },
-] as MockMethod[];
+export default menus
