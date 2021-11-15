@@ -1,8 +1,8 @@
 <template>
-  <Sider :class="prefixCls"/>
+  <LayoutSider :class="prefixCls"/>
 </template>
 <script lang="ts" setup>
-  import Sider from './LayoutSider.vue'
+  import LayoutSider from './LayoutSider.vue'
   import { useDesign } from '@/hooks/web/useDesign';
 
   const { prefixCls } = useDesign('layout-sider-wrapper');
