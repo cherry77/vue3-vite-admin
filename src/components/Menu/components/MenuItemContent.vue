@@ -1,12 +1,12 @@
 <template>
   <span>
     <PieChartOutlined />
-    {{ item.name }}
+    {{ getI18nName }}
   </span>
   <span></span>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -16,6 +16,9 @@ import {
   InboxOutlined,
   AppstoreOutlined,
 } from '@ant-design/icons-vue';
+import { useI18n } from '@/hooks/web/useI18n'
+
+const { t } = useI18n();
 export default defineComponent({
   props: {
     item: {
@@ -32,7 +35,11 @@ export default defineComponent({
     InboxOutlined,
     AppstoreOutlined,
   },
-  setup(props){
+  setup(props) {
+    const getI18nName = computed(() => t(props.item?.meta.title));
+    return {
+      getI18nName
+    }
   }
 })
 </script>
