@@ -1,6 +1,9 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import purgeIcons from 'vite-plugin-purge-icons';
+import windiCSS from 'vite-plugin-windicss'
+
 import { resolve } from 'path'
 // import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-theme';
 
@@ -14,6 +17,10 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(), // 编译vue文件
       vueJsx(),
+      // vite-plugin-purge-icons
+      purgeIcons(),
+      // vite-plugin-windicss
+      windiCSS()
       // viteThemePlugin({
       //   // Match the color to be modified
       //   colorVariables: [],

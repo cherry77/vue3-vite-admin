@@ -7,6 +7,9 @@ import {setupI18n} from '@/locale/setupI18n'
 // if (import.meta.env.DEV) {
   import('ant-design-vue/dist/antd.less');
 // }
+import '@purge-icons/generated'
+import 'windi.css'
+
 async function bootstrap(){
   const app = createApp(App)
 
