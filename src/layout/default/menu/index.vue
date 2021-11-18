@@ -1,25 +1,13 @@
 <template>
   <AppLogo :class="getLogoClass" />
-  <BasicMenu
-    mode="inline"
-    theme="dark"
-    :inline-collapsed="state.collapsed"
-    v-model:openKeys="state.openKeys"
-    v-model:selectedKeys="state.selectedKeys"
-  />
+  <BasicMenu mode="inline" theme="dark"/>
 </template>
 <script lang="ts" setup>
 import { reactive, computed } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
 import { AppLogo } from '@/components/Application';
-import BasicMenu from '@/components/Menu/BasicMenu.vue'
+import { BasicMenu } from '@/components/Menu';
 
-const state = reactive({
-  collapsed: false,
-  selectedKeys: ['dashboard'],
-  openKeys: [],
-  preOpenKeys: ['dashboard'],
-});
 const { prefixCls } = useDesign('layout-menu');
 const getLogoClass = computed(() => {
   return [

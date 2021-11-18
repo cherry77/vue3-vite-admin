@@ -25,7 +25,7 @@ export default defineComponent({
   setup(props) {
     const elRef = ref<HTMLElement | null>(null)
 
-    const update = async() => {
+    const update = async () => {
       const el = unref(elRef);
       if (!el) return;
 
@@ -43,13 +43,13 @@ export default defineComponent({
       let fs = size;
       // 这里isString封装成工具方法
       if (isString(size)) {
-        fs = parseInt(size, 10);
+        fs = parseInt(size, 10); // 传入的数字做处理
       }
 
       return {
         fontSize: `${fs}px`,
         color: color,
-        display: 'inline-flex', // 这个需要再看下，可以起到什么效果
+        display: 'inline-flex',
       };
     });
 
@@ -63,22 +63,22 @@ export default defineComponent({
 })
 </script>
 <style lang="less">
-  .app-iconify {
-    display: inline-block;
-    // vertical-align: middle;
+.app-iconify {
+  display: inline-block;
+  // vertical-align: middle;
 
-    &-spin {
-      svg {
-        animation: loadingCircle 1s infinite linear;
-      }
+  &-spin {
+    svg {
+      animation: loadingCircle 1s infinite linear;
     }
   }
+}
 
-  span.iconify {
-    display: block;
-    min-width: 1em;
-    min-height: 1em;
-    background-color: @iconify-bg-color;
-    border-radius: 100%;
-  }
+span.iconify {
+  display: block;
+  min-width: 1em;
+  min-height: 1em;
+  background-color: @iconify-bg-color;
+  border-radius: 100%;
+}
 </style>

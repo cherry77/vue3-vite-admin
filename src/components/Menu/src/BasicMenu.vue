@@ -2,7 +2,6 @@
   <Menu
     mode="inline"
     theme="dark"
-    :inline-collapsed="collapsed"
     v-model:openKeys="openKeys"
     v-model:selectedKeys="selectedKeys"
   >
@@ -12,10 +11,12 @@
   </Menu>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import { Menu } from 'ant-design-vue'
-import BasicSubMenuItem from '@/components/Menu/components/BasicSubMenuItem.vue'
+import BasicSubMenuItem from '@/components/Menu/src/components/BasicSubMenuItem.vue'
 import menus from '@/mock/sys/menu'
+import { MenuState } from './types'
+
 export default defineComponent({
   components: {
     Menu,
@@ -25,22 +26,21 @@ export default defineComponent({
     collapsed: {
       type: Boolean
     },
-    openKeys: {
-      type: Array,
-      default: () => []
-    },
-    selectedKeys: {
-      type: Array,
-      default: () => []
-    }
   },
   setup(props) {
     const theme = 'dark'
     const isHorizontal = false
+    const menuState = reactive<MenuState>({
+      defaultSelectedKeys: [],
+      openKeys: [],
+      selectedKeys: [],
+      collapsedOpenKeys: [],
+    });
     return {
       menus,
       theme,
-      isHorizontal
+      isHorizontal,
+      ...toRefs(menuState),
     }
   }
 })
