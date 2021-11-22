@@ -23,6 +23,10 @@
     cursor: pointer;
     transition: all 0.2s ease;
 
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+
     &.light {
       border-bottom: 1px solid @border-color-base;
     }
