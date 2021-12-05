@@ -2,6 +2,7 @@ import '@/design/index.less';
 import { createApp } from 'vue'
 import App from './App.vue'
 import { setupRouter } from '@/router';
+import { setupStore } from '@/store';
 import {setupI18n} from '@/locale/setupI18n'
 
 // if (import.meta.env.DEV) {
@@ -12,6 +13,8 @@ import 'windi.css'
 
 async function bootstrap(){
   const app = createApp(App)
+  // Configure store
+  setupStore(app);
 
   // Multilingual configuration
   // Asynchronous case: language files may be obtained from the server side

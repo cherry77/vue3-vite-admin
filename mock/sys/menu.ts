@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock';
-import { resultSuccess, requestParams } from '../util';
+import { resultSuccess, requestParams } from '../_util';
 
 // single
 const dashboardRoute = {
@@ -39,17 +39,14 @@ const dashboardRoute = {
     },
   ],
 };
-const menus = [dashboardRoute]
 
-// export default [
-//   {
-//     url: '/basic-api/getMenuList',
-//     timeout: 1000,
-//     method: 'get',
-//     response: (request: requestParams) => {
-//       return resultSuccess([dashboardRoute]);
-//     },
-//   },
-// ] as MockMethod[];
-
-export default menus
+export default [
+  {
+    url: '/basic-api/getMenuList',
+    timeout: 1000,
+    method: 'get',
+    response: (request: requestParams) => {
+      return resultSuccess([dashboardRoute]);
+    },
+  },
+] as MockMethod[];

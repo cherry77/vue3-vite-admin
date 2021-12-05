@@ -45,6 +45,8 @@
   import { useFormRules, useFormValid } from './useLogin'
   import { useUserStore } from '@/store/modules/user';
 
+  import { getMenuList } from '@/api/sys/menu'
+
   const ACol = Col;
   const ARow = Row;
   const FormItem = Form.Item;
@@ -62,31 +64,34 @@
 
   const { getFormRules } = useFormRules();
   const { validForm } = useFormValid(formRef);
-  const { notification, createErrorModal } = useMessage();
+  // const { notification, createErrorModal } = useMessage();
+  const { notification } = useMessage();
 
   async function handleLogin() {
     const data = await validForm();
     if (!data) return;
     try {
       loading.value = true;
-      const userInfo = await userStore.login({
-        password: data.password,
-        username: data.account,
-        mode: 'none', //不要默认的错误提示
-      });
-      if (userInfo) {
-        notification.success({
-          message: t('sys.login.loginSuccessTitle'),
-          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
-          duration: 3,
-        });
-      }
+      let routeList = await getMenuList()
+      console.log(routeList)
+      // const userInfo = await userStore.login({
+      //   password: data.password,
+      //   username: data.account,
+      //   mode: 'none', //不要默认的错误提示
+      // });
+      // if (userInfo) {
+      //   notification.success({
+      //     message: t('sys.login.loginSuccessTitle'),
+      //     description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+      //     duration: 3,
+      //   });
+      // }
     } catch (error) {
-      createErrorModal({
-        title: t('sys.api.errorTip'),
-        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
-        getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
-      });
+      // createErrorModal({
+      //   title: t('sys.api.errorTip'),
+      //   content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
+      //   getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
+      // });
     } finally {
       loading.value = false;
     }

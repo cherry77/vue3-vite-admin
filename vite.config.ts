@@ -1,18 +1,21 @@
+import type { UserConfig, ConfigEnv } from 'vite';
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import purgeIcons from 'vite-plugin-purge-icons';
 import windiCSS from 'vite-plugin-windicss'
+import { configMockPlugin } from './build/vite/plugin/mock'
 
 import { resolve } from 'path'
 // import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-theme';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
 
   const root = process.cwd();
   const env = loadEnv(mode, root);
-  
+
+  const isBuild = command === 'build';
   return {
     plugins: [
       vue(), // 编译vue文件
@@ -20,7 +23,9 @@ export default defineConfig(({ command, mode }) => {
       // vite-plugin-purge-icons
       purgeIcons(),
       // vite-plugin-windicss
-      windiCSS()
+      windiCSS(),
+      // vite-plugin-mock
+      configMockPlugin(isBuild)
       // viteThemePlugin({
       //   // Match the color to be modified
       //   colorVariables: [],

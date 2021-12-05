@@ -5,10 +5,7 @@
     "activityBar.background": "#7bd5c7",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
-    "editorGroup.border": "#7bd5c7",
-    "panel.border": "#7bd5c7",
     "sash.hoverBorder": "#7bd5c7",
-    "sideBar.border": "#7bd5c7",
     "tab.activeBorder": "#7bd5c7"
   },
   "peacock.color": "#54c9b7"

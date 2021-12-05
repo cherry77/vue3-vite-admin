@@ -1,7 +1,7 @@
 <template>
   <span :class="`${prefixCls}- flex items-center `">
-    <Icon :icon="item.meta.icon" :size="16" class="mr-2"/>
-    {{ getI18nName }}
+    <!-- <Icon :icon="item.meta.icon" :size="16" class="mr-2"/>
+    {{ getI18nName }} -->
   </span>
 </template>
 <script lang="ts">
