@@ -4,6 +4,7 @@ import qs from 'qs'
 import { cloneDeep } from 'lodash-es';
 
 import { AxiosCanceler } from './AxiosCanceler'
+import { RequestEnum } from '@/enums/httpEnum'
 
 export class HttpRequest{
 
@@ -47,9 +48,20 @@ export class HttpRequest{
     return this.request({ ...config, method: 'GET' }, options);
   }
 
-  request<T = any>(config: AxiosRequestConfig, options?: any): Promise<T> {
-    let conf: any = cloneDeep(config);
+  post<T = any>(config: AxiosRequestConfig, options?: any): Promise<T> {
+    return this.request({ ...config, method: 'POST' }, options);
+  }
 
+  request<T = any>(config: AxiosRequestConfig, options?: any): Promise<T> {
+    let conf: any = cloneDeep(config)
+
+    const params = config.params || {};
+    if (conf.method?.toUpperCase() === RequestEnum.GET) {
+      conf.params = params;
+    }else{
+      conf.data = params
+      conf.params = undefined;
+    }
     // const { requestOptions } = this.options;
     // const opt: any = Object.assign({}, requestOptions, options);
 

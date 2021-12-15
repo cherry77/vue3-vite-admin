@@ -56,7 +56,7 @@
   const userStore = useUserStore();
 
   const formData = reactive({
-    account: 'vben',
+    account: 'admin',
     password: '123456',
   });
   const formRef = ref();
@@ -72,21 +72,19 @@
     if (!data) return;
     try {
       loading.value = true;
-      let routeList = await getMenuList()
-      console.log(routeList)
-      // const userInfo = await userStore.login({
-      //   password: data.password,
-      //   username: data.account,
-      //   mode: 'none', //不要默认的错误提示
-      // });
-      // if (userInfo) {
-      //   notification.success({
-      //     message: t('sys.login.loginSuccessTitle'),
-      //     description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
-      //     duration: 3,
-      //   });
-      // }
+      const userInfo = await userStore.login({
+        password: data.password,
+        username: data.account,
+      });
+      if (userInfo) {
+        // notification.success({
+        //   message: t('sys.login.loginSuccessTitle'),
+        //   description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+        //   duration: 3,
+        // });
+      }
     } catch (error) {
+      console.log(error)
       // createErrorModal({
       //   title: t('sys.api.errorTip'),
       //   content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
