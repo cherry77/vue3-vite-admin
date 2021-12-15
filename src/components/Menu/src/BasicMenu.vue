@@ -14,8 +14,8 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import { Menu } from 'ant-design-vue'
 import BasicSubMenuItem from '@/components/Menu/src/components/BasicSubMenuItem.vue'
-import menus from '@/mock/sys/menu'
 import { MenuState } from './types'
+import { useUserStore } from '@/store/modules/user'
 
 export default defineComponent({
   components: {
@@ -28,6 +28,9 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const userStore = useUserStore();
+    console.log(userStore)
+
     const theme = 'dark'
     const isHorizontal = false
     const menuState = reactive<MenuState>({
@@ -36,6 +39,8 @@ export default defineComponent({
       selectedKeys: [],
       collapsedOpenKeys: [],
     });
+    
+    const menus = userStore.getMenus
     return {
       menus,
       theme,

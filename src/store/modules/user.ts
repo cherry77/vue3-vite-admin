@@ -32,13 +32,18 @@ export const useUserStore = defineStore({
       return this.token || getItem(TOKEN_KEY)
     },
     getMenus(): any {
-      return this.menuList || getItem(MENUS_KEY)
+      return getItem(MENUS_KEY)
+      // return this.menuList || getItem(MENUS_KEY)
     }
   },
   actions: {
     setToken(info: string){
       this.token = info ? info : ''
       setItem(TOKEN_KEY, info);
+    },
+    setMenuList(menuList: []){
+      this.menuList = menuList;
+      setItem(MENUS_KEY, menuList);
     },
     async login(params: any){
       try {
@@ -55,7 +60,7 @@ export const useUserStore = defineStore({
     async afterLoginAction(goHome? : boolean){
       try {
         const res = await getMenuList();
-        setItem(MENUS_KEY, res.data.result);
+        this.setMenuList(res.data.result)
       } catch (error) {
         return Promise.reject(error);
       }
