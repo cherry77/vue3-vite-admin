@@ -4,9 +4,13 @@ enum Api {
   Login = '/login',
 }
 
-export function loginApi(params:any) {
-  return defHttp.post({
+export function loginApi(data:any) {
+  return defHttp.fetch({
       url: Api.Login,
-      params,
+      method: 'post',
+      data,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
   });
 }

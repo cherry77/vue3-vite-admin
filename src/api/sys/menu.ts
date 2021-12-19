@@ -5,7 +5,8 @@ enum Api {
 }
 
 export const getMenuList = () => {
-  return defHttp.get({
+  return defHttp.fetch({
+    method: 'GET',
     url: Api.GetMenuList
   })
 };

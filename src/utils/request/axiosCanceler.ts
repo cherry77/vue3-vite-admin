@@ -13,7 +13,7 @@ export class AxiosCanceler{
   addPending(config: AxiosRequestConfig){
     this.removePending(config)
     const pendingKey = getPendingKey(config)
-    config.cancelToken =  config.cancelToken ||  new axios.CancelToken(cancel => {
+    config.cancelToken = config.cancelToken ||  new axios.CancelToken(cancel => {
       pendingMap.set(pendingKey, cancel)
     })
   }

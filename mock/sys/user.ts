@@ -42,9 +42,9 @@ export default [
     url: '/basic-api/login',
     timeout: 200,
     method: 'post',
+    statusCode: 500,
     response: ({ body }) => {
       const { username, password } = body;
-      console.log(username, password)
       const checkUser = createFakeUserList().find(
         (item) => item.username === username && password === item.password,
       );
