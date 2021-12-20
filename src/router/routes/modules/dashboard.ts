@@ -11,7 +11,7 @@ const dashboard: AppRouteRecordRaw = {
     // title: t('routes.dashboard.dashboard'),
     title: 'Dashboard'
   },
-  children: [
+  children: [   
     {
       path: 'analysis',
       name: 'Analysis',
