@@ -1,14 +1,14 @@
 <template>
-  <MenuItem v-if="!item.children || !item.children.length" :key="item.path">
+  <MenuItem v-if="!item.children || !item.children.length" :key="item.name">
     <MenuItemContent :item="item"/>
   </MenuItem>
 
-  <SubMenu v-if="item.children && item.children.length" :key="item.path">
+  <SubMenu v-if="item.children && item.children.length" :key="item.name">
     <template #title>
       <MenuItemContent :item="item"/>
     </template>
     
-    <template v-for="childItem in item.children" :key="childItem.path">
+    <template v-for="childItem in item.children" :key="childItem.name">
       <BasicSubMenuItem v-bind="$props" :item="childItem" />
     </template>
   </SubMenu>

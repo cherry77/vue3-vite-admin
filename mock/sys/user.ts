@@ -42,7 +42,7 @@ export default [
     url: '/basic-api/login',
     timeout: 200,
     method: 'post',
-    statusCode: 500,
+    // statusCode: 500,
     response: ({ body }) => {
       const { username, password } = body;
       const checkUser = createFakeUserList().find(
