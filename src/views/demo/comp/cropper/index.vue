@@ -1,6 +1,7 @@
 <template>
-11111
+  <Cropper />
 </template>
 <script lang="ts" setup>
+import { Cropper } from '@/components/Cropper'
 </script>
 <style></style>

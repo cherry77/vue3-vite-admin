@@ -1,3 +1,3 @@
-import UploadImg from './src/UploadImg.vue';
+import Cropper from './src/Cropper.vue';
 
-export { UploadImg };
+export { Cropper };
