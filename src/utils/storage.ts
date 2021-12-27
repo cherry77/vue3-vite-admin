@@ -4,14 +4,16 @@ export const getItem = <T>(key: string) => {
   try {
     return JSON.parse(data) as T
   } catch (err) {
+    console.log(`get ${key} error`, err)
     return null
   }
 }
 
 export const setItem = (key: string, value: object | string | null) => {
-  if (typeof value === 'object') {
-    value = JSON.stringify(value)
-  }
+  // if (typeof value === 'object') {
+  //   value = JSON.stringify(value)
+  // }
+  value = JSON.stringify(value)
   window.localStorage.setItem(key, value)
 }
 
