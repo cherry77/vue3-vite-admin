@@ -24,7 +24,18 @@ const dragAbout = {
   dragging: false, // 判断是否触发裁剪操作的全局变量
   startX: null,
   startY: null,
-
+  trimPosition: {  // 裁剪框坐标信息
+    startX: null,
+    startY: null,
+    width: null,
+    height: null
+  }
+}
+let tempPosition = {
+  startX: null,
+  startY: null,
+  width: null,
+  height: null
 }
 
 const state = reactive({
@@ -68,7 +79,7 @@ const fileInfo = (file) => {
           type: file.type, // 文件类型
           size: file.size, // 文件大小
           src: file.link, // 文件link
-          trimPosition: null, // 截图框参数
+          trimPosition: null, // 截图框参数 
           rotate: 0, // 旋转度数
         });
       }
@@ -80,7 +91,7 @@ const fileInfo = (file) => {
 
 // 绘制图片
 const drawImage = (image) => {
-  const { imgBase } = image
+  const { imgBase, trimPosition } = image
   // 获取canvas的上下文
   state.ctx = canvasRef.value.getContext('2d')
   // 清除画布
@@ -128,7 +139,7 @@ const onMouseMove = (e) => {
 const onMouseUp = (e) => {
    // 保存相关裁剪信息
    if(dragAbout.dragging){
-
+     dragAbout.trimPosition = tempPosition
    }
    dragAbout.dragging = false
 }
@@ -167,6 +178,14 @@ const drawTrim = (startX, startY, width, height, ctx) => {
     ctx.globalCompositeOperation = 'destination-over';
    	ctx.drawImage(state.image, 0, 0, canvasRef.value.width, canvasRef.value.height);
     ctx.restore();
+
+    tempPosition = {
+      startX,
+      startY,
+      width,
+      height
+    }
+
 }
 </script>
 <style></style>
