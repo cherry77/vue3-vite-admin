@@ -1,6 +1,5 @@
-import { LoginRoute } from '@/router/routes'
-// import type { AppRouteRecordRaw } from '@/router/types';
 import { defineStore } from 'pinia'
+import { store } from '@/store';
 import { TOKEN_KEY, USER_INFO_KEY, MENUS_KEY } from '@/enums/cacheEnum';
 import { getItem, setItem } from '@/utils/storage'
 
@@ -26,10 +25,12 @@ export const useUserStore = defineStore({
   }),
   getters: {
     getUserInfo(): any {
-      return this.userInfo || getItem(USER_INFO_KEY)
+      // return this.userInfo || getItem(USER_INFO_KEY)
+      return getItem(USER_INFO_KEY)
     },
     getToken(): any {
-      return this.token || getItem(TOKEN_KEY)
+      // return this.token || getItem(TOKEN_KEY)
+      return getItem(TOKEN_KEY)
     },
     getMenus(): any {
       return getItem(MENUS_KEY)
@@ -40,6 +41,11 @@ export const useUserStore = defineStore({
     setToken(info: string){
       this.token = info ? info : ''
       setItem(TOKEN_KEY, info);
+    },
+    setUserInfo(info: any) {
+      this.userInfo = info;
+      // this.lastUpdateTime = new Date().getTime();
+      setItem(USER_INFO_KEY, info);
     },
     setMenuList(menuList: []){
       this.menuList = menuList;
@@ -52,7 +58,9 @@ export const useUserStore = defineStore({
         const { token } = res.data.result;
         // save token
         this.setToken(token);
+        this.setUserInfo(res.data.result)
         this.afterLoginAction(goHome);
+        return res.data.result
       } catch (error) {
         return Promise.reject(error);
       }
@@ -67,3 +75,8 @@ export const useUserStore = defineStore({
     }
   }
 })
+
+// Need to be used outside the setup
+export function useUserStoreWithOut() {
+  return useUserStore(store);
+}

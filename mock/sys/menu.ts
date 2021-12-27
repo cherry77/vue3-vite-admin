@@ -63,6 +63,17 @@ const menus = [
           icon: 'bx:bx-home',
         },
       },
+      {
+        path: '/comp/test',
+        name: 'TestDemo',
+        component: '/demo/comp/test/index',
+        meta: {
+          hideMenu: true,
+          hideBreadcrumb: true,
+          title: 'Test',
+          icon: 'bx:bx-home',
+        },
+      },
     ]
   }
 ]

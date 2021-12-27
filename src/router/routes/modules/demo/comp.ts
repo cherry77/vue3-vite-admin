@@ -20,6 +20,14 @@ const comp: AppRouteRecordRaw = {
 				title: '图片剪裁',
 			},
 		},
+		{
+			path: 'test',
+			name: 'TestDemo',
+			component: () => import('@/views/demo/comp/test/index.vue'),
+			meta: {
+				title: 'Test',
+			},
+		},
 	],
 }
 export default comp

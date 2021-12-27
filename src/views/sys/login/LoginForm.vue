@@ -35,25 +35,22 @@
   </Form>
 </template>
 <script lang="ts" setup>
-  import { reactive, ref, unref, computed } from 'vue';
-  import { Checkbox, Form, Input, Row, Col, Button, Divider } from 'ant-design-vue';
+  import { reactive, ref } from 'vue';
+  import { useRouter } from 'vue-router'
+  import { Form, Input, Button, notification } from 'ant-design-vue';
 
   import { useI18n } from '@/hooks/web/useI18n';
-  import { useMessage } from '@/hooks/web/useMessage';
   import { useDesign } from '@/hooks/web/useDesign';
 
   import { useFormRules, useFormValid } from './useLogin'
   import { useUserStore } from '@/store/modules/user';
 
-  import { getMenuList } from '@/api/sys/menu'
-
-  const ACol = Col;
-  const ARow = Row;
   const FormItem = Form.Item;
   const InputPassword = Input.Password;
   const { t } = useI18n();
   const { prefixCls } = useDesign('login');
   const userStore = useUserStore();
+  const router = useRouter()
 
   const formData = reactive({
     account: 'admin',
@@ -64,8 +61,6 @@
 
   const { getFormRules } = useFormRules();
   const { validForm } = useFormValid(formRef);
-  // const { notification, createErrorModal } = useMessage();
-  const { notification } = useMessage();
 
   async function handleLogin() {
     const data = await validForm();
@@ -77,11 +72,12 @@
         username: data.account,
       });
       if (userInfo) {
-        // notification.success({
-        //   message: t('sys.login.loginSuccessTitle'),
-        //   description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
-        //   duration: 3,
-        // });
+        router.replace({name: 'Dashboard'})
+        notification.success({
+          message: t('sys.login.loginSuccessTitle'),
+          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+          duration: 3,
+        });
       }
     } catch (error) {
       console.log(error)
