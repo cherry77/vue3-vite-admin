@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang='ts'>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, onMounted } from 'vue';
 const props = defineProps({
   imageInfo: {
     type: Object,
@@ -11,13 +11,14 @@ const props = defineProps({
   }
 })
 const canvasRef = ref()
-
-drawImage()
-function drawImage () {
+onMounted(() => {
+  drawImage()
+})
+const drawImage = () => {
   console.log('------------', props.imageInfo)
   const ctx = canvasRef.value.getContext('2d')
-  console.log(ctx)
 }
+
 </script>
 <style scoped>
 </style>
