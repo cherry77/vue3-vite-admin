@@ -8,3 +8,4 @@ const handleChange = (e: Event) => {}
 ```
 3. input file中change获取上传的文件内容
 `e.target.files`
+4. canvas绘制图片、为了清晰度，需要一个像素比

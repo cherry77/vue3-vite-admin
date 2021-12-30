@@ -11,13 +11,15 @@ const createPageGuard = (router: Router) => {
   const token = useStore.getToken
 
   router.beforeEach(async (to, from, next) => {
-    if(!token && to.name !== 'Login'){
-      next({ name: 'Login' })
+    if(!token){
+      if(to.name !== 'Login'){
+        next({ name: 'Login' })
+      }
     }else{
       if(to.name == 'Login'){
         next('/')
       }
-      next()
     }
+    next()
   })
 }

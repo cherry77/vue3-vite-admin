@@ -71,6 +71,8 @@ const fileInfo = (file) => {
           scale = proportion > 1 ? canvasDefaultSize / image.width : canvasDefaultSize / image.height,
           canvasWidth = image.width * scale * ratio,
           canvasHeight = image.height * scale * ratio;
+
+          console.log(2, canvasWidth, canvasHeight )
         resolve({
           scale, // 宽高缩放比例
           canvasWidth, // canvas画布宽
