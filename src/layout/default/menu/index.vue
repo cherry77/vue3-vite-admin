@@ -12,10 +12,6 @@ const { prefixCls } = useDesign('layout-menu');
 const getLogoClass = computed(() => {
   return [
     `${prefixCls}-logo`,
-    // unref(getComputedMenuTheme),
-    // {
-    //   [`${prefixCls}--mobile`]: unref(getIsMobile),
-    // },
   ];
 });
 </script>
@@ -27,11 +23,6 @@ const getLogoClass = computed(() => {
   &-logo {
     height: @header-height;
     padding: 10px 4px 10px 10px;
-
-    // img {
-    //   width: @logo-width;
-    //   height: @logo-width;
-    // }
   }
 
   &--mobile {
