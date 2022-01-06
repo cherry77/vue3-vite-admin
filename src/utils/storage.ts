@@ -9,7 +9,7 @@ export const getItem = <T>(key: string) => {
   }
 }
 
-export const setItem = (key: string, value: object | string | null) => {
+export const setItem = (key: string, value: any) => {
   // if (typeof value === 'object') {
   //   value = JSON.stringify(value)
   // }

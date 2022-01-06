@@ -14,7 +14,7 @@
   resolved "https://registry.npmmirror.com/@ant-design/icons-svg/download/@ant-design/icons-svg-4.2.1.tgz?cache=0&sync_timestamp=1632478211055&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2F%40ant-design%2Ficons-svg%2Fdownload%2F%40ant-design%2Ficons-svg-4.2.1.tgz#8630da8eb4471a4aabdaed7d1ff6a97dcb2cf05a"
   integrity sha1-hjDajrRHGkqr2u19H/apfcss8Fo=
 
-"@ant-design/icons-vue@^6.0.0":
+"@ant-design/icons-vue@^6.0.0", "@ant-design/icons-vue@^6.0.1":
   version "6.0.1"
   resolved "https://registry.npm.taobao.org/@ant-design/icons-vue/download/@ant-design/icons-vue-6.0.1.tgz#9d804c3c74d2cfaf97cb18e582d3b9400934f5fd"
   integrity sha1-nYBMPHTSz6+XyxjlgtO5QAk09f0=

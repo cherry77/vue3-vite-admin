@@ -1,23 +1,37 @@
 <template>
   <div :style="getHiddenDomStyle"></div>
-  <LayoutSider class="layout-sidebar layout-sidebar--fixed" breakpoint="lg" :width="width">
+  <LayoutSider
+    class="layout-sidebar layout-sidebar--fixed"
+    breakpoint="lg"
+    :width="siderWidth"
+    :collapsedWidth="48"
+    :trigger="null"
+    collapsible
+    v-model:collapsed="getCollapsed"
+  >
     <LayoutMenu />
   </LayoutSider>
 </template>
 
 <script setup lang='ts'>
-import { computed, CSSProperties } from 'vue'
+import { computed, CSSProperties, ref } from 'vue'
 import { LayoutSider } from 'ant-design-vue'
 import LayoutMenu from './../menu/index.vue';
 
-const width = '220px'
+import { useAppStore } from '@/store/modules/app'
+const appStore = useAppStore()
+const getCollapsed = computed(() => appStore.getCollapsed);
+
+const maxWidth = '220px'
+const minWidth = '48px'
+const siderWidth = computed(() => getCollapsed.value ? minWidth : maxWidth)
 const getHiddenDomStyle = computed((): CSSProperties => {
   return {
-    width: width,
+    width: siderWidth.value,
     overflow: 'hidden',
-    flex: `0 0 ${width}`,
-    maxWidth: width,
-    minWidth: width,
+    flex: `0 0 ${siderWidth.value}`,
+    maxWidth: siderWidth.value,
+    minWidth: siderWidth.value,
     transition: 'all 0.2s',
   };
 });

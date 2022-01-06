@@ -7,7 +7,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, defineEmits } from 'vue'
+import { computed, defineEmits } from 'vue'
 
 const props = defineProps(['options', 'selectedItems', 'level'])
 const emit = defineEmits(['change'])

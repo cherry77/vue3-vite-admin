@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang='ts'>
-import { defineProps, ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 const props = defineProps({
   image: {
     type: HTMLImageElement,
-    required: true
+    required: false
   }
 })
 let ctx: CanvasRenderingContext2D | null = null

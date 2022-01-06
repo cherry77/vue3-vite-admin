@@ -1,6 +1,6 @@
 <template>
   <AppLogo :class="getLogoClass" />
-  <BasicMenu mode="inline" theme="dark"/>
+  <BasicMenu mode="inline"/>
 </template>
 <script lang="ts" setup>
 import { reactive, computed } from 'vue'

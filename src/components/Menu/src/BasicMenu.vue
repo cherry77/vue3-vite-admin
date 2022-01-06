@@ -12,7 +12,7 @@
   </Menu>
 </template>
 <script lang="ts" setup>
-import {reactive, defineProps } from 'vue'
+import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { Menu } from 'ant-design-vue'
 import BasicSubMenuItem from '@/components/Menu/src/components/BasicSubMenuItem.vue'

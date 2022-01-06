@@ -1,29 +1,27 @@
 <template>
-  <LayoutHeader>
-    <!-- <div :class="`${prefixCls}-left`">
-      <AppLogo />
-    </div>
-    <div :class="`${prefixCls}-menu`">
-      <LayoutMenu />
-    </div> -->
+  <LayoutHeader style="background: #fff; padding: 0">
+    <span @click="toggleCollapsed">
+      <MenuUnfoldOutlined class="trigger" v-if="getCollapsed" /> 
+      <MenuFoldOutlined class="trigger" v-else />
+    </span>
   </LayoutHeader>
 </template>
 <script lang="ts" setup>
-  // import { computed } from 'vue';
-  import { LayoutHeader } from 'ant-design-vue';
-  // import { useDesign } from '@/hooks/web/useDesign';
-  // import { AppLogo } from '@/components/Application'
-  // import LayoutMenu from '../menu/index.vue';
+import { ref, unref, computed } from 'vue'
+import { LayoutHeader } from 'ant-design-vue';
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
+import { useAppStore } from '@/store/modules/app'
 
-  // const { prefixCls } = useDesign('layout-header')
+const appStore = useAppStore()
+const getCollapsed = computed(() => appStore.getCollapsed);
 
-  // const getHeaderClass = computed(() => {
-  //   // const theme = unref(getHeaderTheme);
-  //   return [
-  //     prefixCls,
-  //   ];
-  // });
+const toggleCollapsed = () => {
+  appStore.setCollapsed(!unref(getCollapsed))
+}
 </script>
 <style lang="less">
-  @import './index.less';
+@import "./index.less";
+.trigger{
+  font-size: 20px;
+}
 </style>
