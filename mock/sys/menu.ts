@@ -64,6 +64,17 @@ const menus = [
         },
       },
       {
+        path: '/comp/cascader',
+        name: 'CascaderDemo',
+        component: '/demo/comp/cascader/index',
+        meta: {
+          hideMenu: true,
+          hideBreadcrumb: true,
+          title: '级联',
+          icon: 'bx:bx-home',
+        },
+      },
+      {
         path: '/comp/test',
         name: 'TestDemo',
         component: '/demo/comp/test/index',

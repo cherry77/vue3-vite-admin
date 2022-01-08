@@ -20,6 +20,14 @@ const comp: AppRouteRecordRaw = {
 				title: '图片剪裁',
 			},
 		},
+    {
+			path: 'cascader',
+			name: 'CascaderDemo',
+			component: () => import('@/views/demo/comp/cascader/index.vue'),
+			meta: {
+				title: '级联',
+			},
+		},
 		{
 			path: 'test',
 			name: 'TestDemo',
