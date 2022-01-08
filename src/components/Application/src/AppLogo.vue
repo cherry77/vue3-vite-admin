@@ -1,5 +1,5 @@
 <template>
-  <div :class="getAppLogoClass" @click="goHome">AppLogo</div>
+  <div :class="getAppLogoClass" @click="goHome">Logo</div>
 </template>
 
 <script setup lang='ts'>

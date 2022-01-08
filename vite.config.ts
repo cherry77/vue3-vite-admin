@@ -5,6 +5,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import purgeIcons from 'vite-plugin-purge-icons';
 import windiCSS from 'vite-plugin-windicss'
 import { configMockPlugin } from './build/vite/plugin/mock'
+import { visualizer } from 'rollup-plugin-visualizer';
+import { configVisualizerConfig } from './build/vite/plugin/visualizer'
 
 import { resolve } from 'path'
 // import { viteThemePlugin, antdDarkThemePlugin } from 'vite-plugin-theme';
@@ -20,12 +22,12 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     plugins: [
       vue(), // 编译vue文件
       vueJsx(),
+      configMockPlugin(isBuild), // vite-plugin-mock
       // vite-plugin-purge-icons
       purgeIcons(),
       // vite-plugin-windicss
       windiCSS(),
-      // vite-plugin-mock
-      configMockPlugin(isBuild)
+      configVisualizerConfig(),
       // viteThemePlugin({
       //   // Match the color to be modified
       //   colorVariables: [],
@@ -41,6 +43,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       //     'border-color-base': '#303030',
       //   }
       // })
+      visualizer()
     ], 
     resolve: {
       alias: [

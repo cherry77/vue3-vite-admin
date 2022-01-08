@@ -1,16 +1,16 @@
 <template>
   <LayoutHeader style="background: #fff; padding: 0">
     <span @click="toggleCollapsed">
-      <MenuUnfoldOutlined class="trigger" v-if="getCollapsed" /> 
-      <MenuFoldOutlined class="trigger" v-else />
+      <Icon icon="mdi:menu-open" :size="28" rotate="180deg" v-if="getCollapsed"/>
+      <Icon icon="mdi:menu-open" :size="28" v-else/>
     </span>
   </LayoutHeader>
 </template>
 <script lang="ts" setup>
-import { ref, unref, computed } from 'vue'
+import { unref, computed } from 'vue'
 import { LayoutHeader } from 'ant-design-vue';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons-vue';
 import { useAppStore } from '@/store/modules/app'
+import Icon from '@/components/Icon/index';
 
 const appStore = useAppStore()
 const getCollapsed = computed(() => appStore.getCollapsed);
@@ -20,8 +20,4 @@ const toggleCollapsed = () => {
 }
 </script>
 <style lang="less">
-@import "./index.less";
-.trigger{
-  font-size: 20px;
-}
 </style>

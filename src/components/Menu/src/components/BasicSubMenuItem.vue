@@ -14,31 +14,21 @@
   </SubMenu>
   
 </template>
-<script lang="ts">
-import { defineComponent } from "vue";
+<script lang="ts" setup>
 import { MenuItem, SubMenu } from 'ant-design-vue'
 import MenuItemContent from './MenuItemContent.vue'
-export default defineComponent({
-  name: 'BasicSubMenuItem',
-  components: {
-    MenuItem,
-    SubMenu,
-    MenuItemContent
+import BasicSubMenuItem from './BasicSubMenuItem.vue'
+
+defineProps({
+  item: {
+    type: Object,
+    default: () => { }
   },
-  props: {
-    item: {
-      type: Object,
-      default: () => { }
-    },
-    theme: {
-      type: String
-    },
-    isHorizontal: {
-      type: Boolean
-    }
+  theme: {
+    type: String
   },
-  setup(props) {
-    
+  isHorizontal: {
+    type: Boolean
   }
 })
 </script>
