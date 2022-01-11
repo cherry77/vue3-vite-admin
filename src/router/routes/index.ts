@@ -30,9 +30,19 @@ export const LoginRoute: AppRouteModule = {
   },
 };
 
+export const LowerCodeRoute: AppRouteModule = {
+  path: '/lowercode',
+  name: 'LowerCode',
+  component: () => import('@/views/lowercode/index.vue'),
+  meta: {
+    title: 'LowerCode',
+  },
+};
+
 // Basic routing without permission
 export const basicRoutes = [
   LoginRoute,
+  LowerCodeRoute,
   RootRoute,
   ...routeModuleList
 ];
