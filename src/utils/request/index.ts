@@ -18,7 +18,7 @@ function createAxios(options?: Partial<AxiosRequestConfig>){
         // transform
         requestOptions: {
           // 取消重复请求
-          cancelRepeatRequest: true,
+          cancelRepeatRequest: false,
           // 加上时间戳
           withTimestamp: true
         }
