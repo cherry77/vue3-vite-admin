@@ -59,8 +59,8 @@ export default class HttpRequest {
    * @returns Promise
    */
   fetch<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    let conf: CreateAxiosOptions = cloneDeep(config)
-    
+    // let conf: CreateAxiosOptions = cloneDeep(config)
+    let conf: CreateAxiosOptions = config
     // 全局选项
     const { requestOptions } = this.options
     // 将接口请求独立选项和全局选项merge在一起
@@ -71,7 +71,6 @@ export default class HttpRequest {
       conf = beforeRequestHook(conf, opt, this.options);
     }
     conf.requestOptions = opt;
-
     return new Promise((resolve, reject) => {
       this.axiosInstance.request(conf)
         .then((res: AxiosResponse<Result>) => {

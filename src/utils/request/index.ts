@@ -10,7 +10,7 @@ function createAxios(options?: Partial<AxiosRequestConfig>){
         // 基础接口地址
         baseURL: import.meta.env.VITE_API_BASEURL,
         // 超时时间
-        timeout: 10 * 1000,
+        timeout: 30 * 1000,
         // 默认数据传递格式
         headers: { 'Content-Type': ContentTypeEnum.JSON },
 
