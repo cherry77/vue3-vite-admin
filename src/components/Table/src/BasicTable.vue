@@ -1,15 +1,16 @@
 <template>
-  <Table v-bind="$attrs" :columns="columns" :dataSource="dataSourceRef" />
+  <Table v-bind="getBindValues" />
 </template>
 <script lang="ts" setup>
-import { ref, unref } from "vue";
+import { computed, unref, useAttrs } from "vue";
 import type { PropType } from 'vue';
 import { Table } from 'ant-design-vue'
-import { isFunction } from '@/utils/is'
+import useDataSource from './hooks/useDataSource'
+
 const props = defineProps({
   dataSource: {
     type: Array,
-    default: null // 这里一定要设置为null
+    default: null // 这里一定要设置为null,不能是[],用来判断是否传入dataSource
   },
   columns: {
     type: Object,
@@ -20,33 +21,20 @@ const props = defineProps({
   }
 })
 
-const dataSourceRef = ref<any[]>([]); // 再定义一个变量存放table的最终数据dataSource
+// 处理table数据
+// const { dataSourceRef } = useDataSource(props)
+const { dataSourceRef } = useDataSource({
+  api: props.api,
+  datasource: props.dataSource
+})
 
-getDataSource()
-function getDataSource() {
-  const { dataSource, api } = unref(props) // unref()：是 val = isRef(val) ? val.value : val 的语法糖。
-  // !api && dataSource && (dataSourceRef.value = dataSource)
-  if(!api && dataSource){
-    dataSourceRef.value = dataSource
-  }else{
-    fetch()
+const getBindValues = computed(() => {
+  const attrs = useAttrs()
+  return {
+    ...attrs,
+    columns: props.columns,
+    dataSource: unref(dataSourceRef)
   }
-}
-
-async function fetch() {
-  const { api } = unref(props)
-  if (!api || !isFunction(api)) return
-
-  try {
-    const res = await api()
-    dataSourceRef.value = res.data.result
-  } catch (error) {
-    console.log('-----', error)
-  } finally {
-
-  }
-}
-
-
+})
 </script>
 <style></style>
