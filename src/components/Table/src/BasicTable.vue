@@ -1,11 +1,12 @@
 <template>
-  <Table v-bind="getBindValues" />
+  <Table v-bind="getBindValues" @change="handleTableChange" />
 </template>
 <script lang="ts" setup>
-import { computed, unref, useAttrs } from "vue";
+import { computed, unref, useAttrs, toRaw } from "vue";
 import type { PropType } from 'vue';
 import { Table } from 'ant-design-vue'
 import useDataSource from './hooks/useDataSource'
+import usePagination from './hooks/usePagination'
 
 const props = defineProps({
   dataSource: {
@@ -18,23 +19,25 @@ const props = defineProps({
   },
   api: {
     type: Function as PropType<() => Promise<any>>
+  },
+  pagination: {
+    type: Object,
+    default: () => { }
   }
 })
 
+// page
+const { getPaginationInfo, setPagination } = usePagination(props)
 // 处理table数据
-// const { dataSourceRef } = useDataSource(props)
-const { dataSourceRef } = useDataSource({
-  api: props.api,
-  datasource: props.dataSource
-})
-
+const { dataSourceRef, handleTableChange } = useDataSource(props, { getPaginationInfo, setPagination })
 const getBindValues = computed(() => {
-  const attrs = useAttrs()
   return {
-    ...attrs,
+    ...useAttrs(),
     columns: props.columns,
-    dataSource: unref(dataSourceRef)
+    dataSource: unref(dataSourceRef),
+    pagination: toRaw(unref(getPaginationInfo))
   }
 })
+
 </script>
 <style></style>
