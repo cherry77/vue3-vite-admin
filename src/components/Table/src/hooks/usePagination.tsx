@@ -1,5 +1,6 @@
 import { ref, computed, unref } from 'vue'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons-vue';
+import { isBoolean } from '@/utils/is';
 
 const PAGE_SIZE = 5
 const PAGE_SIZE_OPTIONS = ['10', '50', '80', '100']
@@ -17,6 +18,9 @@ export default function usePagination(props) {
     return originalElement;
   }
 	const getPaginationInfo = computed(() => {
+    if (isBoolean(pagination) && !pagination) {
+      return false;
+    }
 		return {
 			current: 1,
 			pageSize: PAGE_SIZE,

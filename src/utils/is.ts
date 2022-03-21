@@ -12,6 +12,10 @@ export function isObject(val: unknown): val is string {
   return is(val, 'Object');
 }
 
+export function isBoolean(val: unknown): val is string {
+  return is(val, 'Boolean');
+}
+
 export function isFunction(val: unknown): val is string {
   return is(val, 'Function');
 }
