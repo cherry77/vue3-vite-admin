@@ -23,18 +23,19 @@ const props = defineProps({
   },
   pagination: {
     type: Object,
-    default: () => {},
+    default: () => { },
   },
   loading: {
     type: Boolean,
     default: false,
   },
 });
+const emit = defineEmits(['reload'])
 const { setLoading, getLoading } = useLoading(props.loading);
 // 处理分页
 const { getPaginationInfo, setPagination } = usePagination(props);
 // 处理table数据
-const { dataSourceRef, handleTableChange } = useDataSource(props, {
+const { dataSourceRef, handleTableChange, reload } = useDataSource(props, {
   getPaginationInfo,
   setLoading,
   setPagination,
@@ -48,5 +49,6 @@ const getBindValues = computed(() => {
     loading: unref(getLoading)
   };
 });
+emit('reload', reload)
 </script>
 <style></style>

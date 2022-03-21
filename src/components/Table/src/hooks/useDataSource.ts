@@ -44,8 +44,13 @@ export default function useDataSource(props, { getPaginationInfo, setPagination,
 		fetch()
 	}
 
+  function reload(){
+    console.log('reload')
+  }
+
 	return {
 		dataSourceRef,
-		handleTableChange
+		handleTableChange,
+    reload
 	}
 }

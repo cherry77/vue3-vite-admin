@@ -1,5 +1,5 @@
 <template>
-  <BasicTable :columns="columns" :api="demoListApi"></BasicTable>
+  <BasicTable @reload="reload" :columns="columns" :api="demoListApi"></BasicTable>
 </template>
 
 <script setup lang='ts'>
@@ -9,7 +9,9 @@ import { getBasicColumns, getBasicData } from './tableData'
 import { demoListApi } from '@/api/demo/table'
 
 const columns = getBasicColumns()
-const dataSource = getBasicData()
+function reload(val){
+  console.log(val)
+}
 </script>
 <style scoped>
 </style>
