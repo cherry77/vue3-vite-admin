@@ -1,10 +1,10 @@
 <template>
-  <LargeFileUploader />
+  <FileUploader />
 </template>
 
 <script setup lang='ts'>
 import { ref, watch } from 'vue'
-import { LargeFileUploader } from '@/components/LargeFileUploader'
+import { FileUploader } from '@/components/FileUploader'
 </script>
 <style scoped>
 </style>
