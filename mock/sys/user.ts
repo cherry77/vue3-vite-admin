@@ -61,5 +61,30 @@ export default [
         desc,
       });
     },
+  },
+  {
+    url: '/basic-api/getToken',
+    method: 'post',
+    response: ({ body }) => {
+      return resultSuccess({token: '123456'});
+    }
+  },
+  {
+    url: '/basic-api/getUserInfo',
+    method: 'post',
+    rawResponse: async (req, res) => {
+      let reqbody = ''
+      await new Promise((resolve) => {
+        req.on('data', (chunk) => {
+          reqbody += chunk
+        })
+        req.on('end', () => resolve(undefined))
+      })
+      res.setHeader('Content-Type', 'application/json')
+
+      res.statusCode = req.headers.authorization ? 200 : 401
+      res.end(JSON.stringify(resultSuccess({username: 'cherry', age: 18})))
+    }
   }
+
 ]

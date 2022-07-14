@@ -37,6 +37,7 @@ import { useDesign } from "@/hooks/web/useDesign";
 
 import { useFormRules, useFormValid } from "./useLogin";
 import { useUserStore } from "@/store/modules/user";
+import { defHttp } from '@/utils/request'
 
 const FormItem = Form.Item;
 const InputPassword = Input.Password;
@@ -83,5 +84,14 @@ async function handleLogin() {
     loading.value = false;
   }
 }
+
+
+defHttp.fetch({
+  url: '/getUserInfo',
+  method: 'post'
+}).then(res => {
+  // console.log(res)
+});
+
 </script>
 <style></style>

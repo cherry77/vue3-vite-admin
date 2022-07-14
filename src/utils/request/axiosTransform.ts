@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { AxiosRequestConfig, AxiosResponse, AxiosInstance } from 'axios';
 import type { CreateAxiosOptions, RequestOptions, Result } from './types';
 import { RequestEnum, ContentTypeEnum } from './httpEnum'
 import qs from 'qs'
@@ -44,7 +44,7 @@ export default {
    * @description: 请求拦截器处理
    */
   requestInterceptors: (config: AxiosRequestConfig, options: CreateAxiosOptions) => {
-    const token = '123456'
+    const token = localStorage.getItem('token')
     if(token){
       // @ts-ignore
       config.headers.Authorization = token
@@ -61,9 +61,20 @@ export default {
   /**
    * @description: 响应错误处理
    */
-  responseInterceptorsCatch: (error: any) => {
-    const { message } = error || {};
+  responseInterceptorsCatch: (error: any, instance: AxiosInstance) => {
+    const { message, config } = error || {};
     const status: number = error?.response?.status
+    if(status === 401){
+      instance.post('/getToken').then(res => {
+        const { result } = res.data
+        localStorage.setItem('token', result.token)
+        config.headers.Authorization = result.token
+        return instance(config)
+      }).catch(err => {
+        return Promise.reject(err)
+      })
+      return
+    }
     checkStatus(status, message)  // 处理错误状态码
 
     return Promise.reject(error); // 错误继续返回给到具体页面

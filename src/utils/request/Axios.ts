@@ -48,7 +48,7 @@ export default class HttpRequest {
     this.axiosInstance.interceptors.response.use(undefined, (error: any) => {
       error.config && axiosCanceler.removePending(error.config);
       if(responseInterceptorsCatch && isFunction(responseInterceptorsCatch)){
-          responseInterceptorsCatch(error)
+          responseInterceptorsCatch(error, this.axiosInstance)
         }
     })
   }
