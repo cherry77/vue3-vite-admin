@@ -1,28 +1,37 @@
 <template>
   <input type="file" @change="handleChange" accept="image/*">
-  <CropperImg :image="data.image"/>
+  <CropperImg v-show="state.imageUpload" :image="state.imageUpload"/>
 </template>
 
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import CropperImg from './CropperImg.vue'
-const data = reactive({
-  image: null
+const state = reactive({
+  imageUpload: null
 })
 
 const handleChange = (e) => {
   const files = Array.from(e.target.files)
+  if(!files.length){
+    // 释放上传系统存储当前值，避免相同文件不触发onchange事件
+    state.imageUpload = null
+    return
+  }
+  // 上传规则校验（比如图片格式，图片大小限制等等)
+
   // 读取文件
-  files.forEach(file => {
-    fileInfo(file).then(image => {
-      data.image = image
-      // drawImage(imageInfo)
-    })
-  })
-  
+  readFilesInfo(files)
 }
 
-const fileInfo = (file) => {
+function readFilesInfo (files) {
+  files.forEach(file => {
+    fileInfo(file).then(image => {
+      state.imageUpload = image
+    })
+  })
+}
+
+function fileInfo (file) {
   return new Promise((resolve, reject) => {
     let reader = new FileReader()
     reader.readAsDataURL(file)
@@ -35,7 +44,7 @@ const fileInfo = (file) => {
         // })
         resolve(image)
       }
-      image.src = e.target?.result  
+      image.src = e.target?.result  // base64
     }
   })
 }
